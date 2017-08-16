@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    tools:context="com.itingxi.PlayActivity"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <com.itingxi.video.LandLayoutVideo
+        android:id="@+id/video_displayer"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"/>
+
+        <ScrollView
+            android:layout_weight="1"
+            android:layout_below="@+id/ad_play_banner"
+            android:id="@+id/play_scrollview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <!--下载-->
+                <RelativeLayout
+                    android:id="@+id/downText"
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/ad_play_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp">
+                    <TextView
+                        android:paddingTop="10dp"
+                        android:paddingLeft="10dp"
+                        android:text="如加载失败,请点击重试或评论区反馈"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Button
+                        android:id="@+id/down_button"
+                        android:onClick="filedownload"
+                        android:layout_marginRight="10dp"
+                        android:layout_alignParentRight="true"
+                        android:text="下载"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+                <!--标签样式-->
+                <LinearLayout
+                    android:id="@+id/tags"
+                    android:layout_below="@id/downText"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/movies_tags_recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scrollbars="vertical"/>
+                </LinearLayout>
+                <!--评论列表-->
+                <LinearLayout
+                    android:layout_below="@+id/tags"
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <android.support.v7.widget.RecyclerView
+                            android:scrollbars="vertical"
+                            android:id="@+id/pl_listView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+                    </LinearLayout>-->
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    <!--提交评论-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:onClick="sendMessage"
+                android:text="提交" />
+
+            <EditText
+                android:layout_marginLeft="5dp"
+                android:id="@+id/pl_editText"
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="@string/pinglun" />
+
+    </LinearLayout>
+</LinearLayout>

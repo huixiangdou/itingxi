@@ -1,0 +1,56 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* .DS_Store
+* Thumbs.db
+* ic_launcher-web.png
+* proguard-project.txt
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+* AndroidManifest.xml => videoJjlibrary1/src/main/AndroidManifest.xml
+* assets/ => videoJjlibrary1/src/main/assets
+* libs/arm64-v8a/libVideoSdkMd5.so => videoJjlibrary1/src/main/jniLibs/arm64-v8a/libVideoSdkMd5.so
+* libs/arm64-v8a/libijkffmpeg.so => videoJjlibrary1/src/main/jniLibs/arm64-v8a/libijkffmpeg.so
+* libs/arm64-v8a/libijkplayer.so => videoJjlibrary1/src/main/jniLibs/arm64-v8a/libijkplayer.so
+* libs/arm64-v8a/libijksdl.so => videoJjlibrary1/src/main/jniLibs/arm64-v8a/libijksdl.so
+* libs/armeabi-v7a/libVideoSdkMd5.so => videoJjlibrary1/src/main/jniLibs/armeabi-v7a/libVideoSdkMd5.so
+* libs/armeabi-v7a/libijkffmpeg.so => videoJjlibrary1/src/main/jniLibs/armeabi-v7a/libijkffmpeg.so
+* libs/armeabi-v7a/libijkplayer.so => videoJjlibrary1/src/main/jniLibs/armeabi-v7a/libijkplayer.so
+* libs/armeabi-v7a/libijksdl.so => videoJjlibrary1/src/main/jniLibs/armeabi-v7a/libijksdl.so
+* libs/armeabi/libVideoSdkMd5.so => videoJjlibrary1/src/main/jniLibs/armeabi/libVideoSdkMd5.so
+* libs/armeabi/libijkffmpeg.so => videoJjlibrary1/src/main/jniLibs/armeabi/libijkffmpeg.so
+* libs/armeabi/libijkplayer.so => videoJjlibrary1/src/main/jniLibs/armeabi/libijkplayer.so
+* libs/armeabi/libijksdl.so => videoJjlibrary1/src/main/jniLibs/armeabi/libijksdl.so
+* libs/videojj_iva_4.0.jar => videoJjlibrary1/libs/videojj_iva_4.0.jar
+* libs/videojj_sdk.jar => videoJjlibrary1/libs/videojj_sdk.jar
+* libs/x86/libVideoSdkMd5.so => videoJjlibrary1/src/main/jniLibs/x86/libVideoSdkMd5.so
+* libs/x86/libijkffmpeg.so => videoJjlibrary1/src/main/jniLibs/x86/libijkffmpeg.so
+* libs/x86/libijkplayer.so => videoJjlibrary1/src/main/jniLibs/x86/libijkplayer.so
+* libs/x86/libijksdl.so => videoJjlibrary1/src/main/jniLibs/x86/libijksdl.so
+* res/ => videoJjlibrary1/src/main/res/
+* src/ => videoJjlibrary1/src/main/java/
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

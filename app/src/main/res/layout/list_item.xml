@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/ivpic"
+        android:layout_width="100dp"
+        android:layout_height="70dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_margin="5dp"
+        android:layout_marginBottom="5dp"
+        android:scaleType="fitXY"/>
+        android:src="@drawable/notification_template_icon_bg"/>
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/ivpic"
+        android:text="标题"
+        android:layout_margin="5dp" />
+
+    <TextView
+        android:id="@+id/tvClick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvLength"
+        android:layout_alignBottom="@+id/tvLength"
+        android:layout_alignLeft="@+id/tvTitle"
+        android:layout_alignStart="@+id/tvTitle"
+        android:text="点击"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/tvLength"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ivpic"
+        android:layout_alignParentRight="true"
+        android:layout_margin="5dp"
+        android:text="时长"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="14dp" />
+
+</RelativeLayout>
