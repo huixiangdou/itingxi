@@ -77,6 +77,7 @@ public class MovieHistoryAdapter extends RecyclerView.Adapter<MovieHistoryAdapte
         String image = movies.getMovie_image();
         ImageLoader.getInstance().displayImage(image,holder.tvivpic);
 
+
         //设置数据tag
         String movie_id = mCursor.getString(mCursor.getColumnIndex(MovieContract.MovieEntry.MOVIE_ID));
         holder.itemView.setTag(R.id.tag_movie,movies);
@@ -116,7 +117,7 @@ public class MovieHistoryAdapter extends RecyclerView.Adapter<MovieHistoryAdapte
     }
 
     //内部类,用于绑定列表的子类
-    class HistoryViewHolder extends RecyclerView.ViewHolder{
+    public class HistoryViewHolder extends RecyclerView.ViewHolder{
         private TextView title;
         private TextView tvclick;
         private TextView tvlength;

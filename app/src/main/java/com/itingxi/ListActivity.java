@@ -52,12 +52,6 @@ public class ListActivity extends BasicActivity{
         //找到text Id
         textView = (TextView) findViewById(R.id.textMessage);
 
-        //加载广告
-
-//        if (Application.statusCode){
-//            GoogleAD.bannerView(this,R.id.ad_list_banner);
-//        }
-
         Intent intent = getIntent();
         String url = intent.getStringExtra(Application.URL_MESSAGE);//得到URL
         text_message = intent.getStringExtra(Application.TEXT_MESSAGE);//得到text

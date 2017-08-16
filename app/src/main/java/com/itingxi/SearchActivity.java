@@ -40,11 +40,6 @@ public class SearchActivity extends BasicActivity{
         setContentView(R.layout.activity_search);
         searchActivityInstance = this;
 
-        //加载广告
-//        if (Application.statusCode){
-//            GoogleAD.bannerView(this,R.id.ad_search_banner);
-//        }
-
         //搜索结果
         Intent intent = getIntent();
         button_search_text = intent.getStringExtra("button_search_text");

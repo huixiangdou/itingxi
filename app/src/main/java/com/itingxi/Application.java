@@ -28,7 +28,7 @@ public class Application extends android.app.Application {
     public final static String CNTV_ANDROID = ITINGXI_URL + "/youku/20170808/cntv_android.php?url=";//获取优酷视频信息
     public static boolean statusCode = false;
     public static final String DATABASE_NAME = "itingxi.db";//数据库名称
-    public static final int DATABASE_VERSION = 5;//数据库版本号
+    public static final int DATABASE_VERSION = 11;//数据库版本号
 
     public static Context CONTEXT;
     @Override

@@ -38,9 +38,9 @@ public class HistoryActivity extends AppCompatActivity{
 
         movieDbHelper = new MovieDbHelper(this);//新建一个数据库帮助类
         movieDb = movieDbHelper.getWritableDatabase(); //获取数据库类
-        Cursor cursor = movieDbHelper.getAllHistoryMovies(movieDb,this);//获取光标
+        Cursor historyMoviescursor = movieDbHelper.getAllHistoryMovies(movieDb,HistoryActivity.this);//获取光标
 
-        moviesAdapter = new MovieHistoryAdapter(this,cursor);//创建适配器
+        moviesAdapter = new MovieHistoryAdapter(this,historyMoviescursor);//创建适配器
         movieRecyclerView.setAdapter(moviesAdapter);//设置适配器
 
         moviesAdapter.setOnRecyclerViewItemClickListener(new OnRecyclerViewItemClickListener() {

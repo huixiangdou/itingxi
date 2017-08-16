@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.database.sqlite.SQLiteDatabase;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -111,7 +110,7 @@ public class PlayActivity extends BasicActivity {
         //增加视频封面
         imageView = new ImageView(this);
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        imageView.setImageURI(Uri.parse(movie.getMovie_image()));
+        imageView.setImageResource(R.mipmap.loading);
 
         resolveNormalVideoUI();
 

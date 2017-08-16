@@ -36,4 +36,10 @@ public class MovieContract {
         public static final String CHANNEL_ISLAST = "class_islast";
         public static final String CHANNEL_CLICKED = "class_cliced";
     }
+
+    public static final class SearchKey implements BaseColumns{
+        public static final String TABLE_NAME = "search_key";
+        public static final String SEARCH_STRING ="search_string";
+        public static final String SEARCH_TIMESTAMP = "search_timestamp";
+    }
 }

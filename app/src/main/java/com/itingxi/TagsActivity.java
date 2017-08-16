@@ -1,6 +1,8 @@
 package com.itingxi;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -11,7 +13,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.itingxi.Adapter.SearchKeyAdapter;
 import com.itingxi.Adapter.TagAdapter;
+import com.itingxi.data.MovieDbHelper;
 import com.itingxi.model.Tag;
 import com.itingxi.utils.HttpUtils;
 import com.umeng.analytics.MobclickAgent;
@@ -29,8 +33,12 @@ import java.util.regex.Pattern;
 public class TagsActivity extends AppCompatActivity {
     private ArrayList<Tag> tagList;
     private RecyclerView mRecyclerView;
+    private RecyclerView searchKeyRecyclerView;
+    private SearchKeyAdapter searchKeyAdapter;
     private TagAdapter mAdapter;
     public static TagsActivity tagsActivityInstance;
+    private MovieDbHelper searchKeyDbHelper;
+    private SQLiteDatabase sqLiteDatabase;
 
     private Handler getTagsHandler = new Handler(){
         @Override
@@ -55,11 +63,6 @@ public class TagsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tags);
         tagsActivityInstance = this;
 
-        //广告
-//        if (Application.statusCode){
-//            GoogleAD.bannerView(this,R.id.ad_tags_banner);
-//        }
-
         mRecyclerView = (RecyclerView)findViewById(R.id.movies_tags_recycler_view);
         mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(4,StaggeredGridLayoutManager.VERTICAL));
         mRecyclerView.setHasFixedSize(true);
@@ -71,6 +74,27 @@ public class TagsActivity extends AppCompatActivity {
         HttpUtils.getNewsJson(GET_PL_URL, getTagsHandler);
 
         mAdapter.setOnItemClickListener(new TagAdapter.OnRecyclerViewItemClickListener(){
+            @Override
+            public void onItemClick(View view , String data){
+                Intent intent = new Intent(TagsActivity.this,ListActivity.class);
+                String url = Application.getTagsJson + data;
+                intent.putExtra(Application.URL_MESSAGE,url);
+                intent.putExtra(Application.TEXT_MESSAGE,data);
+                startActivity(intent);
+                Toast.makeText(TagsActivity.this,data,Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        searchKeyDbHelper = new MovieDbHelper(this);
+        sqLiteDatabase = searchKeyDbHelper.getWritableDatabase();
+        Cursor cursor = searchKeyDbHelper.getAllSearchKey(sqLiteDatabase,TagsActivity.this);
+        searchKeyRecyclerView = (RecyclerView) findViewById(R.id.searchKey_recycler_view);
+        searchKeyRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(4,StaggeredGridLayoutManager.VERTICAL));
+        searchKeyAdapter = new SearchKeyAdapter(this,cursor);
+        searchKeyRecyclerView.setAdapter(searchKeyAdapter);
+        searchKeyAdapter.swapCursor(searchKeyDbHelper.getAllSearchKey(sqLiteDatabase,this));//更新列表UI
+
+        searchKeyAdapter.setOnItemClickListener(new SearchKeyAdapter.OnRecyclerViewItemClickListener(){
             @Override
             public void onItemClick(View view , String data){
                 Intent intent = new Intent(TagsActivity.this,ListActivity.class);
@@ -108,6 +132,8 @@ public class TagsActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"搜索关键字过长,请缩短再试",Toast.LENGTH_SHORT).show();
             return;
         }
+
+        searchKeyDbHelper.addNewSearchKey(button_search_text,sqLiteDatabase);
 
         Intent intent = new Intent(this,SearchActivity.class);
         intent.putExtra("button_search_text",button_search_text);
