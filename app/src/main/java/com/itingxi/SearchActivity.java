@@ -1,6 +1,7 @@
 package com.itingxi;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -14,6 +15,7 @@ import com.itingxi.Adapter.OnRecyclerViewItemClickListener;
 import com.itingxi.async.ClientUtils;
 import com.itingxi.async.MoviesAsyncResponseHandler;
 import com.itingxi.basic.BasicActivity;
+import com.itingxi.data.MovieDbHelper;
 import com.itingxi.model.Movies;
 import com.umeng.analytics.MobclickAgent;
 
@@ -33,12 +35,17 @@ public class SearchActivity extends BasicActivity{
     private RecyclerView recyclerView;
     private String button_search_text;
     public static SearchActivity searchActivityInstance;
+    private SQLiteDatabase sqLiteDatabase;
+    private MovieDbHelper movieDbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         searchActivityInstance = this;
+
+        movieDbHelper = new MovieDbHelper(this);
+        sqLiteDatabase = movieDbHelper.getWritableDatabase();
 
         //搜索结果
         Intent intent = getIntent();
@@ -53,8 +60,8 @@ public class SearchActivity extends BasicActivity{
         ClientUtils.getClientUtils().getNetDate(url,new MoviesAsyncResponseHandler(SearchActivity.this,this,name));
     }
 
-    /*
-        搜索
+    /**
+     *搜索
      */
     public void button_search(View view){
         EditText editText = (EditText) findViewById(R.id.textView_search);
@@ -86,9 +93,10 @@ public class SearchActivity extends BasicActivity{
         if ( TagsActivity.tagsActivityInstance != null){
             TagsActivity.tagsActivityInstance.finish();
         }
-        /**
-         * 搜索内容跳转
-         */
+
+        movieDbHelper.addNewSearchKey(sqLiteDatabase,button_search_text);//添加搜索记录
+
+         //搜索内容跳转
         Intent intent = new Intent(this,SearchActivity.class);
         intent.putExtra("button_search_text",button_search_text);
         startActivity(intent);

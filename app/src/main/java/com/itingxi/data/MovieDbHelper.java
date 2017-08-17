@@ -152,10 +152,11 @@ public class MovieDbHelper extends SQLiteOpenHelper {
 
     /**
      * 添加搜索历史
-     * @param searchKey
+     * @param sqLiteDatabase 数据库
+     * @param searchKey 关键字
      * @return 插入的位置
      */
-    public long addNewSearchKey(String searchKey, SQLiteDatabase sqLiteDatabase){
+    public long addNewSearchKey(SQLiteDatabase sqLiteDatabase,String searchKey){
         removeSearchKey(sqLiteDatabase,searchKey);//历史数据存在,删除
         ContentValues contentValues = new ContentValues();
         contentValues.put(MovieContract.SearchKey.SEARCH_STRING,searchKey);

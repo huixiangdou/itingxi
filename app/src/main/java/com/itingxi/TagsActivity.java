@@ -133,7 +133,7 @@ public class TagsActivity extends AppCompatActivity {
             return;
         }
 
-        searchKeyDbHelper.addNewSearchKey(button_search_text,sqLiteDatabase);
+        searchKeyDbHelper.addNewSearchKey(sqLiteDatabase,button_search_text);//添加搜索记录
 
         Intent intent = new Intent(this,SearchActivity.class);
         intent.putExtra("button_search_text",button_search_text);

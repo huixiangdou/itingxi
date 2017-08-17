@@ -47,16 +47,17 @@
         android:layout_height="match_parent"
         android:layout_weight="1">
         <TextView
-            android:text="搜索历史"
+            android:text="搜索历史:"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <android.support.v7.widget.RecyclerView
             android:id="@+id/searchKey_recycler_view"
+            android:paddingBottom="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scrollbars="vertical"/>
         <TextView
-            android:text="热搜"
+            android:text="热搜:"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <android.support.v7.widget.RecyclerView
