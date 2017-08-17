@@ -8,8 +8,8 @@ android {
         applicationId "com.itingxi"
         minSdkVersion 16
         targetSdkVersion 26
-        versionCode 2081102
-        versionName '2.2.7'
+        versionCode 2081701
+        versionName '2.2.8'
     }
     buildTypes {
         release {
@@ -34,17 +34,23 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.loopj.android:android-async-http:1.4.9'
     compile 'com.loopj.android:android-async-http:1.4.9'
-    compile 'com.umeng.analytics:analytics:latest.integration'//友盟
+    compile 'com.umeng.analytics:analytics:latest.integration'
+    //友盟
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     compile 'com.android.support:support-v4:25.0.0'
     compile 'com.android.support:design:25.0.0'
-    compile 'com.liulishuo.filedownloader:library:0.3.4'//下载
+    compile 'com.liulishuo.filedownloader:library:0.3.4'
+    //下载
     compile 'com.android.support:recyclerview-v7:25.0.0'
     compile 'com.android.support:appcompat-v7:25.1.1'
-    compile 'com.jakewharton:butterknife:8.8.1'//@bindView
-    compile 'com.shuyu:GSYVideoPlayer:2.0.4'//视频
+    compile 'com.jakewharton:butterknife:8.8.1'
+    //@bindView
+    compile 'com.shuyu:GSYVideoPlayer:2.0.4'
+    //视频
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
     testCompile 'junit:junit:4.12'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'//@bindview
-    compile 'com.songhang:smart-headerfooter-recyclerview:1.0.1'//错列布局
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    //@bindview
+    compile 'com.songhang:smart-headerfooter-recyclerview:1.0.1'
+    //错列布局
 }

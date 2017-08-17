@@ -28,7 +28,7 @@ public class AboutActivity extends AppCompatActivity {
 
         StringBuilder text = new StringBuilder();
         textView1.setText("版本号:"+versionName+".");
-        text.append("更新日期:2017-08-11\n");
+        text.append("更新日期:2017-08-17\n");
         text.append("官网:www.itingxi.com\n");
         text.append("开发者:小郭\n");
         text.append("小郭微信:xiaoguo2050\n");
