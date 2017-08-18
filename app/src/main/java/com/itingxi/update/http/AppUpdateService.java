@@ -269,13 +269,16 @@ public class AppUpdateService extends Service {
             // 4 * 1024的Buffer
             byte buffer[] = new byte[4 * 1024];
             int temp;
+
             // 在sd卡创建文件
             file = FileUtils.createFileInSd(FileUtils.CACHDIR + File.separator + fileName);
             // 文件输出流
+            Log.d("123456","123");
             output = new FileOutputStream(file);
 
             // 循环写入
             while ((temp = input.read(buffer)) != -1) {
+
                 output.write(buffer, 0, temp);
                 downedSize = downedSize + temp;
 

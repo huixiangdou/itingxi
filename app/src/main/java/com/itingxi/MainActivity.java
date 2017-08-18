@@ -1,5 +1,6 @@
 package com.itingxi;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -17,6 +18,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.baidu.autoupdatesdk.BDAutoUpdateSDK;
+import com.baidu.autoupdatesdk.UICheckUpdateCallback;
 import com.itingxi.Adapter.MoviesAdapter;
 import com.itingxi.Adapter.OnRecyclerViewItemClickListener;
 import com.itingxi.async.ClientUtils;
@@ -24,7 +27,6 @@ import com.itingxi.async.MoviesAsyncResponseHandler;
 import com.itingxi.basic.BasicActivity;
 import com.itingxi.interFace.OnLoadMoreListener;
 import com.itingxi.model.Movies;
-import com.itingxi.update.http.AppUpdateManager;
 import com.itingxi.utils.ImageUtils;
 import com.umeng.analytics.MobclickAgent;
 
@@ -40,6 +42,8 @@ public class MainActivity extends BasicActivity {
     private LinearLayoutManager mLayoutManager;
     private ArrayList moviesArraylist;
     public static MainActivity mainActivityInstace;
+    private TextView txtLog;
+    private ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +52,10 @@ public class MainActivity extends BasicActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         mainActivityInstace = this;
+
+        txtLog = (TextView) findViewById(R.id.txt_log);
+        dialog = new ProgressDialog(this);
+        dialog.setIndeterminate(true);
 
         //这是显示列表
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -60,7 +68,7 @@ public class MainActivity extends BasicActivity {
         navigationView.setNavigationItemSelectedListener(this);
 
         //检查更新
-        AppUpdateManager.getInstance(MainActivity.this).checkUpdate();
+        BDAutoUpdateSDK.uiUpdateAction(MainActivity.this, new MainActivity.MyUICheckUpdateCallback());
 
         //获取数据
         getData();
@@ -144,8 +152,6 @@ public class MainActivity extends BasicActivity {
                 startActivity(intent);
             }
         });
-
-
 
         moviesAdapter.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
@@ -272,12 +278,23 @@ public class MainActivity extends BasicActivity {
             Intent intent = new Intent(this,HistoryActivity.class);
             startActivity(intent);
         }
-//          else if (id == R.id.nav_send) {
-//
-//        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    //默认UI更新
+    public class MyUICheckUpdateCallback implements UICheckUpdateCallback {
+
+        @Override
+        public void onNoUpdateFound() {
+        }
+
+        @Override
+        public void onCheckComplete() {
+            Toast.makeText(MainActivity.this,"您的版本为最新哦",Toast.LENGTH_LONG).show();
+            dialog.dismiss();
+        }
     }
 }

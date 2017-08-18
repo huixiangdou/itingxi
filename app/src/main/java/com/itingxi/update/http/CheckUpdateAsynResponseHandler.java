@@ -67,16 +67,18 @@ public class CheckUpdateAsynResponseHandler extends JsonHttpResponseHandler {
                 if (ireaderObj != null) {
                     updateInfo.setName(ireaderObj.optString("name"));
                     updateInfo.setVersionName(ireaderObj.optString("app_version"));
-                    updateInfo.setVersionCode(ireaderObj.optInt("version_code"));
+//                    updateInfo.setVersionCode(ireaderObj.optInt("version_code"));
+                    updateInfo.setVersionCode(2081702);
                     updateInfo.setFeatures(ireaderObj.optString("features"));
-                    updateInfo.setUpdateUrl(ireaderObj.optString("update_url"));
+//                    updateInfo.setUpdateUrl(ireaderObj.optString("update_url"));
+                    updateInfo.setUpdateUrl("http://itingxi-10012740.cossh.myqcloud.com/apk/2017/0219/itingxi.apk");
                     updateInfo.setSdkVersion(ireaderObj.optString("sdk_version"));
                     updateInfo.setOsVersion(ireaderObj.optString("os_version"));
-
+                    Log.d("update_url",ireaderObj.optString("update_url"));
 
                     // 解析json数据
                     listener.onSuccess(updateInfo);
-
+                    updateInfo.setUpdateUrl(ireaderObj.optString("update_url"));
                 }
 
             } catch (Exception e) {

@@ -3,6 +3,7 @@ package com.itingxi.update.utils;
 import android.os.Environment;
 import android.os.StatFs;
 import android.text.TextUtils;
+import android.util.Log;
 
 import java.io.File;
 
@@ -29,10 +30,18 @@ public class FileUtils {
     }
 
     public static File createFileInSd(String fileName) throws Exception {
+        Log.d("123456","1234");
         String SDPATH = Environment.getExternalStorageDirectory()
                 + File.separator;
         File file = new File(SDPATH + fileName);
-        file.createNewFile();
+        Log.d("123456",file.getPath()+"--"+File.separator+"---"+Environment.getExternalStorageDirectory()+"---"+fileName);
+        boolean bool = file.createNewFile();
+        if (bool){
+            Log.d("123456","123457");
+        }else {
+            Log.d("123456","123458");
+        }
+
         return file;
     }
 
@@ -40,7 +49,7 @@ public class FileUtils {
         String SDPATH = Environment.getExternalStorageDirectory()
                 + File.separator + CACHDIR + File.separator;
         File dir = new File(SDPATH + dirName);
-        dir.mkdir();
+        dir.mkdirs();
         return dir;
     }
 
@@ -50,7 +59,7 @@ public class FileUtils {
         File dir = new File(path);
         if (!dir.exists()) {
             System.out.println("cache dir created");
-            dir.mkdir();
+            dir.mkdirs();
         }
         return dir;
     }

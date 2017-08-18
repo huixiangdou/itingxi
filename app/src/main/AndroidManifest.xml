@@ -33,6 +33,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:windowSoftInputMode="adjustPan">
+        <meta-data android:name="BDAPPID" android:value="8594955"/>
+        <meta-data android:name="BDAPPKEY" android:value="yzjFtwOpb22uFgHP0GDiBX4tkjty3YHZ"/>
+        <provider android:authorities="com.itingxi.fileprovider"
+            android:name="android.support.v4.content.FileProvider"
+            android:exported="false" android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/bdp_update_filepaths"/>
+        </provider>
         <activity android:name=".LaunchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
